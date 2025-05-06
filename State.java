@@ -1,3 +1,7 @@
+/**
+ * State.java
+ * Defines the State class representing a state in an automaton.
+ */
 public class State {
     private final String name;
 

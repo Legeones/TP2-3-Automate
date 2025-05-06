@@ -1,3 +1,8 @@
+/**
+ * Transition.java
+ * Defines the Transition class representing a transition in an automaton.
+ * It contains the source state, destination state, and the symbol that triggers the transition.
+ */
 public class Transition {
     private final State fromState;
     private final State toState;

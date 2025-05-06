@@ -18,6 +18,9 @@ public class main {
         }
     }
 
+    /*
+     * This method reads an automaton from a file, prints its details, and tests from the file corresponding to the automaton.
+     */
     private static void printAutomate(String fileName) throws IOException {
         Automate automate = new Automate(fileName);
         System.out.println("Initial State: " + automate.getInitialState());
@@ -40,6 +43,9 @@ public class main {
         }
     }
 
+    /*
+     * This method reads a file containing test words and returns them as a list of strings.
+     */
     private static List<String> testWords(String fileName) throws FileNotFoundException {
         try (BufferedReader br = new BufferedReader(new FileReader(fileName))) {
             return br.lines().collect(Collectors.toList());
