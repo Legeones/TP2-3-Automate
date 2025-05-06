@@ -1,0 +1,11 @@
+states
+zero:I
+un
+deux:F
+L
+transitions
+zero->un[label=a]
+zero->zero[label=b]
+un->un[label=a]
+un->deux[label=b]
+L
