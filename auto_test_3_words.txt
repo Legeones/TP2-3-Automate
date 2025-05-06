@@ -1,6 +1,12 @@
+:: expected result - true
 aaac
+:: expected result - true
 bbbc
+:: expected result - false : explanation - automate needs a pair number of 'a's
 aaabbbc
+:: expected result - true
 aaaabbbc
+:: expected result - false : explanation - cannot have two 'a's followed by a 'b'
 aabbbc
+:: expected result - false : explanation - automate needs an impair number of 'b's
 aaaaaabbbbc

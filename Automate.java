@@ -104,38 +104,56 @@ public class Automate {
     }
 
     boolean appartient(String word) {
-        Set<State> currentStates = new HashSet<>();
-        currentStates.add(initialState);
-        currentStates.addAll(getEpsilonClosure(initialState));
+        if (initialState == null) {
+            System.out.println("The automaton has no initial state");
+            return false; // Pas d'état initial
+        }
+
+        // Initialisation de l'état courant avec la fermeture epsilon de l'état initial
+        State currentState = initialState;
+        Set<State> epsilonClosure = getEpsilonClosure(currentState);
 
         for (char symbol : word.toCharArray()) {
-            Set<State> nextStates = new HashSet<>();
-            for (State state : currentStates) {
+            System.out.println("Current state: " + currentState);
+            System.out.println("Processing symbol: " + symbol);
+
+            State nextState = null;
+
+            // Vérification des transitions valides pour le symbole courant
+            for (State state : epsilonClosure) {
                 Transition transition = getTransition(state, String.valueOf(symbol));
                 if (transition != null) {
-                    nextStates.add(transition.getToState());
-                    nextStates.addAll(getEpsilonClosure(transition.getToState()));
+                    nextState = transition.getToState();
+                    break; // On prend la première transition valide
                 }
             }
-            if (nextStates.isEmpty()) {
-                return false; // Aucun état valide
+
+            if (nextState == null) {
+                System.out.println("No valid transition for symbol: " + symbol);
+                return false; // Pas de transition valide
             }
-            currentStates = nextStates;
+
+            System.out.println("Next state: " + nextState +"\n---------------");
+
+            // Mise à jour de l'état courant et calcul de la fermeture epsilon
+            currentState = nextState;
+            epsilonClosure = getEpsilonClosure(currentState);
         }
 
-        for (State state : currentStates) {
-            if (finalStates.contains(state)) {
-                return true; // Un état final est atteint
-            }
+        // Vérification si l'état courant est un état final
+        if (finalStates.contains(currentState)) {
+            return true; // État final atteint
         }
-        return false;
+
+        System.out.println("No final state reached");
+        return false; // Aucun état final atteint
     }
 
     private Set<State> getEpsilonClosure(State state) {
         Set<State> closure = new HashSet<>();
         closure.add(state);
         for (Transition transition : transitions) {
-            if (transition.getFromState().equals(state) && transition.getSymbol().isEmpty()) {
+            if (transition.getFromState().equals(state) && transition.getSymbol().equals("ε")) {
                 closure.add(transition.getToState());
                 closure.addAll(getEpsilonClosure(transition.getToState()));
             }

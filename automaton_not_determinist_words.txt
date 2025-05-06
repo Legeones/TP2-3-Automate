@@ -1,0 +1,12 @@
+:: expected result true
+q
+:: expected result true
+gq
+:: expected result true
+geq
+:: expected result true
+gnsajgq
+:: expected result true
+egsajpgnarsgq
+:: expected result false : explanation: cannot move and jump at the same time
+egj

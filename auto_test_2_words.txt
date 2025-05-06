@@ -1,6 +1,12 @@
+:: expected result - true
 ab
+:: expected result - true
 aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaab
+:: expected result - true
 aaaaaaaaab
+:: expected result - true
 bbbbbbbbbbbbbbbbbbbbbbbaaaaaaaaaaaaaaaaaaaaaab
+:: expected result - false : explanation - automate cannot have 'b's in between 'a's and cannot finnish by an 'a'
 bbbbbbbbbbbaaaaaaaaaabbbbbbbbaaaaaaaaaaa
+:: expected result - false : explanation - automate cannot have 'b's in between 'a's
 aaaaaaaaaaaaabbbbbbbbbbbbbaaaaaaab

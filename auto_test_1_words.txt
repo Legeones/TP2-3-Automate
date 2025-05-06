@@ -1,2 +1,4 @@
+:: expected result - true
 ab
+:: expected result - false : explanation - automate does not contain the letter 'z'
 zeasf
