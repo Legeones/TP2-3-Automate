@@ -9,6 +9,8 @@ public class main {
     public static void main(String[] args) {
         try {
             printAutomate("automaton_not_determinist.txt");
+            Generation generation = new Generation();
+            generation.genererNetLogo("test_netlogo.nls", new Automate("automaton_not_determinist.txt"));
             //printAutomate("automaton_determinist.txt");
             //printAutomate("auto_test_1.txt");
             //printAutomate("auto_test_2.txt");
